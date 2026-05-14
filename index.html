@@ -6,7 +6,6 @@
   <title>MV Stomatology – Vaša zubná ambulancia</title>
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="3f51acee-bc7d-45a2-a608-92c91f6e5a8a" data-blockingmode="auto" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     body { font-family: 'Inter', sans-serif; background: #f7fafc; }
@@ -526,7 +525,7 @@
         <div class="flex flex-wrap items-center gap-4 text-xs text-gray-500">
           <button onclick="togglePrivacy()" class="hover:text-black underline">Ochrana súkromia</button>
           <a href="#" class="hover:text-black">Všeobecné obchodné podmienky</a>
-          <button onclick="CookieConsent.showPreferences()" class="hover:text-black underline">Nastavenia cookies</button>
+          <button onclick="Cookiebot.renew()" class="hover:text-black underline">Nastavenia cookies</button>
         </div>
         <p class="text-xs text-gray-400">&copy; 2025 MV Stomatology s.r.o.</p>
       </div>
@@ -534,45 +533,6 @@
     </div>
   </footer>
 
-  <!-- Cookie Consent -->
-  <script type="module">
-    import 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.umd.js';
-    CookieConsent.run({
-      guiOptions: {
-        consentModal: { layout: 'bar', position: 'bottom', equalWeightButtons: false },
-        preferencesModal: { layout: 'box', position: 'right' }
-      },
-      categories: {
-        necessary: { readOnly: true },
-        analytics: {}
-      },
-      language: {
-        default: 'sk',
-        translations: {
-          sk: {
-            consentModal: {
-              title: 'Používame cookies',
-              description: 'Táto stránka používa cookies na zabezpečenie správneho fungovania a na analýzu návštevnosti.',
-              acceptAllBtn: 'Prijať všetky',
-              acceptNecessaryBtn: 'Iba nevyhnutné',
-              showPreferencesBtn: 'Nastaviť'
-            },
-            preferencesModal: {
-              title: 'Nastavenia cookies',
-              acceptAllBtn: 'Prijať všetky',
-              acceptNecessaryBtn: 'Iba nevyhnutné',
-              savePreferencesBtn: 'Uložiť nastavenia',
-              closeIconLabel: 'Zavrieť',
-              sections: [
-                { title: 'Nevyhnutné cookies', description: 'Potrebné pre fungovanie stránky, nedajú sa vypnúť.', linkedCategory: 'necessary' },
-                { title: 'Analytické cookies', description: 'Pomáhajú pochopiť, ako návštevníci používajú stránku. Všetky údaje sú anonymizované.', linkedCategory: 'analytics' }
-              ]
-            }
-          }
-        }
-      }
-    });
-  </script>
 
   <!-- Lightbox -->
   <div id="lightbox">
