@@ -3,17 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MV Stomatology – Vaša zubná ambulancia</title>
+  <title>MV Stomatology – Zubná ambulancia Banská Bystrica</title>
+  <meta name="description" content="Moderná zubná ambulancia v Banskej Bystrici. Bezbolestné ošetrenia, estetická stomatológia, implantáty a ortodontica. Objednajte sa online alebo telefonicky.">
+  <link rel="canonical" href="https://www.mvstomatology.sk">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mvstomatology.sk">
+  <meta property="og:title" content="MV Stomatology – Zubná ambulancia Banská Bystrica">
+  <meta property="og:description" content="Moderná zubná ambulancia v Banskej Bystrici. Bezbolestné ošetrenia pre celú rodinu.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:locale" content="sk_SK">
+
+  <!-- Favicon (nahradiť vlastným) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230098f2'/><text y='.9em' font-size='70' x='50%' text-anchor='middle' dominant-baseline='auto' fill='white'>🦷</text></svg>">
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="3f51acee-bc7d-45a2-a608-92c91f6e5a8a" data-blockingmode="auto" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" data-cookieconsent="ignore"></script>
 
-  <!-- Google Analytics – blokované Cookiebotom kým návštevník nedá súhlas -->
-  <script data-cookieconsent="statistics" async src="https://www.googletagmanager.com/gtag/js?id=G-RJPHZZ6NB8" type="text/plain"></script>
-  <script data-cookieconsent="statistics" type="text/plain">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RJPHZZ6NB8');
+  <!-- Google Analytics – načíta sa až po súhlase so štatistikami -->
+  <script data-cookieconsent="ignore">
+    function loadGA() {
+      if (window._gaLoaded) return;
+      window._gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RJPHZZ6NB8';
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-RJPHZZ6NB8');
+    }
+    window.addEventListener('CookiebotOnAccept', function() {
+      if (Cookiebot.consent.statistics) loadGA();
+    });
+    window.addEventListener('CookiebotOnLoad', function() {
+      if (Cookiebot.consent.statistics) loadGA();
+    });
   </script>
 
   <style>
@@ -109,6 +136,8 @@
     #mobile-menu.open { display: flex; }
     #privacy-section { display: none; }
     #privacy-section.open { display: block; }
+    #cookie-section { display: none; }
+    #cookie-section.open { display: block; }
   </style>
 </head>
 <body class="text-black antialiased">
@@ -461,6 +490,7 @@
               class="w-full bg-black text-white font-semibold py-3 rounded-xl text-sm hover:bg-gray-800 transition-colors">
               Odoslať žiadosť
             </button>
+            <p class="text-xs text-gray-400 leading-relaxed">Odoslaním formulára berieme do úvahy vaše osobné údaje (meno, telefón) na účel dohodnutia termínu ošetrenia. Právny základ: plnenie zmluvy (čl. 6 ods. 1 písm. b GDPR). Prevádzkovateľ: MVStomatology s.r.o. Viac informácií: <button type="button" onclick="togglePrivacy()" class="underline hover:text-gray-600">Ochrana súkromia</button>.</p>
           </form>
 
           <!-- Úspech -->
@@ -513,19 +543,226 @@
   </section>
 
   <!-- Ochrana osobných údajov — skrytá, zobrazí sa po kliknutí -->
-  <section id="privacy-section" class="py-12 bg-[#f7fafc] border-t border-gray-100">
+  <section id="privacy-section" class="py-14 bg-[#f7fafc] border-t border-gray-100">
     <div class="max-w-3xl mx-auto px-6">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-black">Ochrana osobných údajov</h2>
-        <button onclick="togglePrivacy()" class="text-xs text-gray-400 hover:text-black underline">Zavrieť</button>
+      <div class="flex items-start justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-black mb-1">Zásady ochrany osobných údajov</h2>
+          <p class="text-xs text-gray-400">Platné od 1. januára 2025</p>
+        </div>
+        <button onclick="togglePrivacy()" class="text-xs text-gray-400 hover:text-black underline mt-1 flex-shrink-0">Zavrieť ✕</button>
       </div>
-      <div class="text-sm text-gray-600 space-y-3 leading-relaxed">
-        <p><strong>Prevádzkovateľ:</strong> MVStomatology s. r. o., Na Zábave 13, 974 01 Banská Bystrica, IČO: 57 106 983</p>
-        <p><strong>Účel spracovania:</strong> Osobné údaje zbierame výlučne za účelom rezervácie termínov a komunikácie s pacientmi. Právny základ: plnenie zmluvy (čl. 6 ods. 1 písm. b GDPR).</p>
-        <p><strong>Doba uchovávania:</strong> Údaje uchovávame po dobu nevyhnutnú na splnenie účelu, najviac 5 rokov. Zdravotná dokumentácia: 20 rokov podľa zákona 578/2004 Z.z.</p>
-        <p><strong>Práva dotknutej osoby:</strong> Prístup, oprava, vymazanie, obmedzenie spracovania, prenosnosť. Sťažnosť na Úrade na ochranu osobných údajov SR (dataprotection.gov.sk).</p>
-        <p><strong>Cookies:</strong> Nevyhnutné cookies pre fungovanie webu. Analytické cookies len s vaším súhlasom.</p>
-        <p><strong>Kontakt DPO:</strong> gdpr@mvstomatology.sk</p>
+      <div class="text-sm text-gray-600 leading-relaxed space-y-6">
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">1. Prevádzkovateľ</h3>
+          <p>MVStomatology s. r. o., Na Zábave 13, 974 01 Banská Bystrica<br>
+          IČO: 57 106 983 | Zapísaná v OR SR, oddiel Sro<br>
+          E-mail: <a href="mailto:gdpr@mvstomatology.sk" class="text-[#0098f2] hover:underline">gdpr@mvstomatology.sk</a></p>
+          <p class="mt-2 text-xs text-gray-500">Prevádzkovateľ neurčil zodpovednú osobu (DPO) v zmysle čl. 37 GDPR, nakoľko spracúvanie zdravotných údajov neprebieha vo veľkom rozsahu. Kontaktnou osobou pre otázky ochrany osobných údajov je konateľ spoločnosti dostupný na vyššie uvedenom e-maily.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">2. Aké osobné údaje spracúvame a prečo</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs border-collapse">
+              <thead>
+                <tr class="bg-gray-100">
+                  <th class="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">Kategória údajov</th>
+                  <th class="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">Účel</th>
+                  <th class="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">Právny základ</th>
+                  <th class="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">Doba uchovávania</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-2 border border-gray-200">Meno, telefónne číslo</td>
+                  <td class="px-3 py-2 border border-gray-200">Rezervácia termínu, komunikácia s pacientom</td>
+                  <td class="px-3 py-2 border border-gray-200">Plnenie zmluvy (čl. 6 ods. 1 písm. b GDPR)</td>
+                  <td class="px-3 py-2 border border-gray-200">5 rokov</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="px-3 py-2 border border-gray-200">Zdravotná dokumentácia (osobitná kategória podľa čl. 9 GDPR)</td>
+                  <td class="px-3 py-2 border border-gray-200">Poskytovanie zdravotnej starostlivosti</td>
+                  <td class="px-3 py-2 border border-gray-200">Zákonná povinnosť (§ 24 zák. 578/2004 Z.z.) + čl. 9 ods. 2 písm. h GDPR (zdravotná starostlivosť)</td>
+                  <td class="px-3 py-2 border border-gray-200">20 rokov</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border border-gray-200">IP adresa, správanie na webe</td>
+                  <td class="px-3 py-2 border border-gray-200">Webová analytika (Google Analytics 4)</td>
+                  <td class="px-3 py-2 border border-gray-200">Súhlas (čl. 6 ods. 1 písm. a GDPR)</td>
+                  <td class="px-3 py-2 border border-gray-200">26 mesiacov</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">3. Príjemcovia osobných údajov</h3>
+          <p class="mb-2">Vaše osobné údaje môžeme zdieľať s nasledovnými kategóriami príjemcov:</p>
+          <ul class="list-disc list-inside space-y-1 text-xs">
+            <li><strong>Web3Forms</strong> – spracovateľ kontaktného formulára (USA; prenos zabezpečený štandardnými zmluvnými doložkami EÚ podľa čl. 46 ods. 2 písm. c GDPR)</li>
+            <li><strong>Google Ireland Limited / Google LLC</strong> – Google Analytics 4 (analýza návštevnosti; prenos do USA krytý rozhodnutím Európskej komisie o primeranosti ochranného rámca EÚ–USA z 10. júla 2023 — Google LLC je certifikovaná organizácia v rámci DPF; spracovanie prebieha len po udelení súhlasu s analytickými cookies)</li>
+            <li><strong>Usercentrics A/S (Cookiebot)</strong> – správa súhlasov s cookies (EÚ)</li>
+            <li><strong>Štátne orgány</strong> – na základe zákonnej povinnosti (napr. daňový úrad, poisťovne)</li>
+          </ul>
+          <p class="mt-2 text-xs text-gray-500">Osobné údaje nepredávame tretím stranám na marketingové účely.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">4. Práva dotknutej osoby</h3>
+          <p class="mb-2">Podľa GDPR máte právo:</p>
+          <ul class="list-disc list-inside space-y-1 text-xs">
+            <li><strong>Na prístup</strong> – vedieť, aké údaje o vás spracúvame</li>
+            <li><strong>Na opravu</strong> – požiadať o opravu nesprávnych údajov</li>
+            <li><strong>Na vymazanie</strong> – požiadať o vymazanie, ak to zákon dovoľuje</li>
+            <li><strong>Na obmedzenie spracovania</strong> – v zákonom stanovených prípadoch</li>
+            <li><strong>Na prenosnosť</strong> – získať údaje v strojovo čitateľnom formáte</li>
+            <li><strong>Namietať</strong> – voči spracovaniu na základe oprávneného záujmu</li>
+            <li><strong>Odvolať súhlas</strong> – kedykoľvek (napríklad zmeniť nastavenia cookies)</li>
+          </ul>
+          <p class="mt-3">Žiadosti posielajte na <a href="mailto:gdpr@mvstomatology.sk" class="text-[#0098f2] hover:underline">gdpr@mvstomatology.sk</a>. Odpovieme do 30 dní.</p>
+          <p class="mt-2">Máte tiež právo podať sťažnosť na <strong>Úrad na ochranu osobných údajov SR</strong>:<br>
+          Hraničná 12, 820 07 Bratislava | <a href="https://dataprotection.gov.sk" target="_blank" rel="noopener" class="text-[#0098f2] hover:underline">dataprotection.gov.sk</a></p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">5. Povinnosť poskytnúť osobné údaje</h3>
+          <p class="mb-2">Poskytnutie osobných údajov prostredníctvom kontaktného formulára (meno, telefón) je <strong>dobrovoľné</strong>, avšak nevyhnutné na to, aby sme vás mohli kontaktovať a dohodnúť termín ošetrenia. Bez týchto údajov nie je možné spracovať vašu žiadosť o objednanie.</p>
+          <p class="text-xs text-gray-500">Poskytnutie zdravotnej dokumentácie v rámci poskytovania zdravotnej starostlivosti je zákonnou povinnosťou vyplývajúcou zo zákona č. 578/2004 Z.z.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">6. Automatizované rozhodovanie a profilovanie</h3>
+          <p>Prevádzkovateľ <strong>nevykonáva automatizované rozhodovanie ani profilovanie</strong> v zmysle čl. 22 GDPR. Všetky rozhodnutia týkajúce sa poskytovania zdravotnej starostlivosti sú prijímané ľuďmi.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">7. Cookies</h3>
+          <p>Informácie o cookies nájdete v <button onclick="togglePrivacy(); setTimeout(toggleCookie,300);" class="text-[#0098f2] hover:underline">Zásadách používania cookies</button>. Nastavenia môžete kedykoľvek zmeniť kliknutím na „Nastavenia cookies" v päte stránky.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">8. Zmeny týchto zásad</h3>
+          <p>Zásady môžeme aktualizovať. Aktuálna verzia je vždy zverejnená na tejto stránke s dátumom platnosti.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Cookie Policy — skrytá, zobrazí sa po kliknutí -->
+  <section id="cookie-section" class="py-14 bg-white border-t border-gray-100">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="flex items-start justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-black mb-1">Zásady používania cookies</h2>
+          <p class="text-xs text-gray-400">Platné od 1. januára 2025</p>
+        </div>
+        <button onclick="toggleCookie()" class="text-xs text-gray-400 hover:text-black underline mt-1 flex-shrink-0">Zavrieť ✕</button>
+      </div>
+      <div class="text-sm text-gray-600 leading-relaxed space-y-6">
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">1. Čo sú cookies</h3>
+          <p>Cookies sú malé textové súbory, ktoré webová stránka ukladá do vášho zariadenia (počítač, tablet, telefón) pri jej návšteve. Umožňujú stránke zapamätať si vaše preferencie a správanie.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">2. Aké cookies používame</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs border-collapse">
+              <thead>
+                <tr class="bg-gray-100">
+                  <th class="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">Názov cookie</th>
+                  <th class="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">Poskytovateľ</th>
+                  <th class="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">Typ</th>
+                  <th class="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">Účel</th>
+                  <th class="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">Platnosť</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-2 border border-gray-200 font-mono">CookieConsent</td>
+                  <td class="px-3 py-2 border border-gray-200">Cookiebot (Usercentrics A/S)</td>
+                  <td class="px-3 py-2 border border-gray-200"><span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded text-xs font-medium">Nevyhnutné</span></td>
+                  <td class="px-3 py-2 border border-gray-200">Ukladá súhlas alebo nesúhlas návštevníka s cookies</td>
+                  <td class="px-3 py-2 border border-gray-200">1 rok</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="px-3 py-2 border border-gray-200 font-mono">_ga</td>
+                  <td class="px-3 py-2 border border-gray-200">Google Analytics</td>
+                  <td class="px-3 py-2 border border-gray-200"><span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded text-xs font-medium">Analytické</span></td>
+                  <td class="px-3 py-2 border border-gray-200">Rozlišuje jedinečných používateľov, meria návštevnosť</td>
+                  <td class="px-3 py-2 border border-gray-200">2 roky</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border border-gray-200 font-mono">_ga_RJPHZZ6NB8</td>
+                  <td class="px-3 py-2 border border-gray-200">Google Analytics 4</td>
+                  <td class="px-3 py-2 border border-gray-200"><span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded text-xs font-medium">Analytické</span></td>
+                  <td class="px-3 py-2 border border-gray-200">Uchováva stav relácie a meria interakcie na stránke</td>
+                  <td class="px-3 py-2 border border-gray-200">2 roky</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">3. Kategórie cookies a právny základ</h3>
+          <div class="space-y-3">
+            <div class="border border-gray-200 rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-semibold">Nevyhnutné</span>
+                <span class="text-xs text-gray-500">— súhlas sa nevyžaduje</span>
+              </div>
+              <p class="text-xs text-gray-600">Tieto cookies sú nevyhnutné pre fungovanie webovej stránky. Bez nich by stránka nemohla správne fungovať (napr. správa súhlasov s cookies). Právny základ: oprávnený záujem prevádzkovateľa (čl. 6 ods. 1 písm. f GDPR) alebo zákonná povinnosť.</p>
+            </div>
+            <div class="border border-gray-200 rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-semibold">Analytické</span>
+                <span class="text-xs text-gray-500">— vyžaduje váš súhlas</span>
+              </div>
+              <p class="text-xs text-gray-600">Tieto cookies nám pomáhajú pochopiť, ako návštevníci používajú náš web (napr. ktoré stránky sú najnavštevovanejšie). Všetky dáta sú anonymizované a neslúžia na identifikáciu konkrétnych osôb. Spracovateľom je <strong>Google Ireland Limited</strong>; dáta môžu byť prenesené na servery v USA (štandardné zmluvné doložky EÚ). Právny základ: súhlas (čl. 6 ods. 1 písm. a GDPR).</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">4. Správa súhlasu a odvolanie</h3>
+          <p class="mb-3">Pri prvej návšteve stránky sa zobrazí banner, kde môžete:</p>
+          <ul class="list-disc list-inside space-y-1 text-xs mb-3">
+            <li>Prijať všetky cookies</li>
+            <li>Odmietnuť všetky nepovinnné cookies</li>
+            <li>Nastaviť si vlastné preferencie podľa kategórií</li>
+          </ul>
+          <p class="mb-3">Svoj súhlas môžete <strong>kedykoľvek odvolať alebo zmeniť</strong> kliknutím na tlačidlo <button onclick="Cookiebot.renew()" class="text-[#0098f2] hover:underline font-medium">Nastavenia cookies</button> v päte stránky.</p>
+          <p class="text-xs text-gray-500">Odvolanie súhlasu nemá vplyv na zákonnosť spracovania pred jeho odvolaním.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">5. Cookies tretích strán a prenosy mimo EÚ</h3>
+          <p>Google Analytics 4 je prevádzkovaný spoločnosťou Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Írsko). Dáta môžu byť spracúvané na serveroch spoločnosti Google LLC v USA. Prenos do USA je krytý <strong>rozhodnutím Európskej komisie o primeranosti ochranného rámca EÚ–USA (EU–US Data Privacy Framework)</strong> zo dňa 10. júla 2023 — Google LLC je registrovanou a certifikovanou organizáciou v tomto rámci. Viac informácií: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-[#0098f2] hover:underline">policies.google.com/privacy</a>.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">6. Ako odstrániť cookies v prehliadači</h3>
+          <p class="mb-2">Cookies môžete odstrániť alebo zablokovať priamo v nastaveniach vášho prehliadača:</p>
+          <ul class="list-disc list-inside space-y-1 text-xs">
+            <li>Chrome: Nastavenia → Súkromie a zabezpečenie → Súbory cookie</li>
+            <li>Firefox: Možnosti → Súkromie a zabezpečenie → Cookies a údaje stránok</li>
+            <li>Safari: Predvoľby → Súkromie → Spravovať dáta webových stránok</li>
+            <li>Edge: Nastavenia → Súkromie a zabezpečenie → Cookies</li>
+          </ul>
+          <p class="mt-2 text-xs text-gray-500">Blokovanie cookies môže obmedziť funkčnosť niektorých stránok.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-black text-base mb-2">7. Kontakt</h3>
+          <p>Otázky k používaniu cookies posielajte na <a href="mailto:gdpr@mvstomatology.sk" class="text-[#0098f2] hover:underline">gdpr@mvstomatology.sk</a>.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -540,10 +777,10 @@
         </div>
         <div class="flex flex-wrap items-center gap-4 text-xs text-gray-500">
           <button onclick="togglePrivacy()" class="hover:text-black underline">Ochrana súkromia</button>
-          <a href="#" class="hover:text-black">Všeobecné obchodné podmienky</a>
+          <button onclick="toggleCookie()" class="hover:text-black underline">Cookie Policy</button>
           <button onclick="Cookiebot.renew()" class="hover:text-black underline">Nastavenia cookies</button>
         </div>
-        <p class="text-xs text-gray-400">&copy; 2025 MV Stomatology s.r.o.</p>
+        <p class="text-xs text-gray-400">&copy; 2026 MV Stomatology s.r.o.</p>
       </div>
       <p class="text-xs text-gray-400 mt-3">Zdravotnícke zariadenie – ambulancia zubného lekárstva. Člen Slovenskej komory zubných lekárov.</p>
     </div>
@@ -615,6 +852,19 @@
     // Privacy toggle
     function togglePrivacy() {
       const section = document.getElementById('privacy-section');
+      const other = document.getElementById('cookie-section');
+      other.classList.remove('open');
+      section.classList.toggle('open');
+      if (section.classList.contains('open')) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Cookie Policy toggle
+    function toggleCookie() {
+      const section = document.getElementById('cookie-section');
+      const other = document.getElementById('privacy-section');
+      other.classList.remove('open');
       section.classList.toggle('open');
       if (section.classList.contains('open')) {
         section.scrollIntoView({ behavior: 'smooth' });
@@ -624,4 +874,3 @@
 
 </body>
 </html>
-
