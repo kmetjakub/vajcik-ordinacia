@@ -452,6 +452,8 @@
             <input type="hidden" name="access_key" value="a76b0763-072c-4058-8898-d0f2f867e225">
             <input type="hidden" name="subject" value="Nová žiadosť o objednanie – MVStomatology">
             <input type="hidden" name="redirect" value="false">
+            <!-- Honeypot: skryté pred človekom, boty ho vyplnia a tým sa prezradia -->
+            <input type="text" name="address_line_2" style="display:none" tabindex="-1" autocomplete="off" value="">
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -826,10 +828,11 @@
     if (contactForm) {
       contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const data = new FormData(contactForm);
+        if (data.get('address_line_2') !== '') return; // bot chytený
         const btn = contactForm.querySelector('button[type="submit"]');
         btn.textContent = 'Odosielam...';
         btn.disabled = true;
-        const data = new FormData(contactForm);
         const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
         const json = await res.json();
         if (json.success) {
